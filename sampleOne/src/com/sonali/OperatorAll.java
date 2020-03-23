@@ -15,7 +15,7 @@ public class OperatorAll {
         System.out.println(!a);//boolean
         short p=10,q=10;
         p+=q; //inernally added ..so no error
-        p=p+q; //externally added. Converted to int. Compailation error
+      //  p=p+q; //externally added. Converted to int. Compailation error
 
     }
 

@@ -2,18 +2,20 @@ package com.sonali;
 public class Inheritance {
     //Protected method can be overridden by subclasses and inner classes. No restriction. We should keep in mind that the
     //return type and signature must be same.
+    //nested inner class be static
 
 
     public static void main(String[] args) {
-        Inheritance i=new Test5();
+        Inheritance.Test1 i= new Inheritance().new Test1();
         i.Test(2);
+        Inheritance i1=new Test2();
     }
     protected Number Test(Number num) {
         System.out.println("1" + num);
         return num;
     }
 
-    protected static class Test1 extends Inheritance {
+    protected  class Test1 extends Inheritance {
         protected Number Test(Number num1) {
             System.out.println("2" + num1);
             return num1;
@@ -40,7 +42,7 @@ public class Inheritance {
     }
 }
 
-class Test5 extends Inheritance{
+class  Test5 extends Inheritance{
     protected Number Test(Number num){
         System.out.println("6"+num);
         return num;
