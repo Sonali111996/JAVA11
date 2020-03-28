@@ -16,4 +16,12 @@ public class SwitchCase {
                return "negative";
         }
     }
+    String select(Integer input){
+        switch (input){
+            case 1+0:
+                return String.valueOf(input);
+            default:
+                return null;
+        }
+    }
 }
