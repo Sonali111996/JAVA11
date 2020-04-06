@@ -33,7 +33,7 @@ class Cylinder extends Circle{
 
 }
 
-class Main{
+class Main1{
     public static void main(String[] args) {
         Circle c=new Circle(3.75);
         System.out.println(c.getRadius());
