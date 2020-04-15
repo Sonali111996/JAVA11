@@ -48,5 +48,14 @@ class  Test5 extends Inheritance{
         return num;
     }
 }
+class Foo1{
+    static String op="jkl";
+
+}
 
 
+class Bar1 extends Foo1{
+    void printx(){
+        System.out.println(Foo1.op);
+    }
+}
