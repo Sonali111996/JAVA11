@@ -9,7 +9,7 @@ public class MapAdventureGameMain {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        locations.put(0,new MapAdventureGame(0,"Not going anywhere"))
+        locations.put(0,new MapAdventureGame(0,"Not going anywhere"));
         locations.put(1,new MapAdventureGame(1,"Home"));
         locations.put(2,new MapAdventureGame(2,"SSVM Gajspati Nagar"));
         locations.put(3,new MapAdventureGame(3,"Den Hotel"));
