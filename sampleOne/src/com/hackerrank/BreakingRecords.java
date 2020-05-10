@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BreakingRecords {
+    public static void main(String[] args) {
+
+    }
     static int[] breakingRecords(int[] scores) {
 
         AtomicInteger count = new AtomicInteger();
