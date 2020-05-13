@@ -6,14 +6,15 @@ import java.util.stream.Stream;
 
 public class CountTriplet {
     public static void main(String[] args) {
-        long r = 5;
+
+        long r = 3;
         List<Long> arr1 = new ArrayList<>();
         arr1.add(1l);
        // arr1.add(3l);
-        arr1.add(5l);
-        arr1.add(5l);
-        arr1.add(25l);
-        arr1.add(125l);
+        arr1.add(3l);
+        arr1.add(9l);
+        arr1.add(9l);
+        arr1.add(27l);
         arr1.add(81l);
        // arr1.add(82l);
 
@@ -80,28 +81,37 @@ public class CountTriplet {
 
     }
     static long countTriplets11(List<Long> arr,  long r) {
-        long count =0;
-        long z=arr.size();
-
-        if (arr.stream().allMatch(arr.get(0)::equals) && r==1){
-            count=(z*(z-1)*(z-2))/6;
-            return count;
+        long count = 0;
+        long sum = 0;
+        long z = arr.size();
+        List<Long> arr1 = new ArrayList<>();
+        if (arr.stream().allMatch(arr.get(0)::equals) && r == 1) {
+            count = (z * (z - 1) * (z - 2)) / 6;
+            sum = count;
+            return sum;
+        }
+        arr1 = arr.stream().distinct().collect(Collectors.toList());
+        if(r==1){
+            for(int i=0;i<arr1.size();i++) {
+                int p=Collections.frequency(arr,arr1.get(i));
+                count += (p * (p - 1) * (p - 2)) / 6;
+                sum=count;
+            }
+            return sum;
+        }
+        for (int i = 0; i < arr.size(); i++) { //1 3 9 9 27 81
+            long r1=arr.get(i); long r2=r1*r; long r3=r2*r;
+            if(Collections.binarySearch(arr,r2)>i && Collections.binarySearch(arr,r3)>arr.indexOf(r2)){
+                count=Collections.frequency(arr,r1)*Collections.frequency(arr.subList(arr.indexOf(r2),arr.size()),r2)
+                        *Collections.frequency(arr.subList(arr.indexOf(r3),arr.size()),r3);
+                System.out.println("r1 :"+r1+"  r2: "+r2+"     r3 :  "+ r3);
+                sum+=count;
+            }
         }
 
-        arr=arr.stream().filter(n->n==1 || n%r==0)
-                .flatMap(s->Stream.of(s))
-                .collect(Collectors.toList());
-        if(arr.size()==0){
-            count=0;
-        }
-        if(r!=1){
-            long sum= (long) ((1-Math.pow(r,3))/(1-3));
-        }
-        arr.stream().distinct().filter(a->a%r==0 && a%Math.pow(r,2)==0).forEach(System.out::println);
+        return sum;
 
-
-    //
-
+    }
 
 
 
@@ -124,6 +134,5 @@ public class CountTriplet {
 //
 //        }
 
-        return count;
-    }
+
 }
